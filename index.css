@@ -67,11 +67,6 @@ img {
     --padding: 20px 50px
 }
 
-body {
-    margin: 0 auto;
-    background-color: var(--white);
-}
-
 img{
     width: 50%;
     margin: 0 auto;

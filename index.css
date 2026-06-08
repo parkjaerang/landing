@@ -68,8 +68,6 @@ img {
 }
 
 body {
-    width: 380px;
-    height: auto;
     margin: 0 auto;
     background-color: var(--white);
 }
@@ -106,23 +104,34 @@ header{
 .element_wrap>h2{
     font-family: 'SST', 'Noto Sans JP', sans-serif;
     font-weight: 900;
-    font-size: 36px;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .element_wrap>h3{
     font-family: 'SST', 'Noto Sans JP', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 20px;
 }
 
 
 .element_wrap .line{
+    cursor: pointer;
     background-color:var(--line);
     border: none;
     padding: 10px 30px;
-    box-shadow: 0 4px 20px rgba(45, 122, 79, 0.3);
+    box-shadow: 0 4px 20px rgba(36, 97, 62, 0.479);
     color: var(--white);
     width: 100%;
     margin-bottom: 50px;
+    border-radius: 10px;
+    transform: translateY(0px);
+    transition: transform .1s ease;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.element_wrap .line:hover{
+    transform: translateY(-2px);
 }

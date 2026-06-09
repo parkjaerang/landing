@@ -75,21 +75,21 @@ if (eventGrid && eventMore) {
     renderCards();
 }
 
-/* ===== SIGNATURE オートスライド ===== */
+/* ===== SIGNATURE 자동 슬라이드 ===== */
 const sigTrack = document.querySelector('.sig_track');
 
 if (sigTrack) {
-    const INTERVAL = 3000;
+    const INTERVAL = 2500;
     let timer = null;
     let paused = false;
     let isDragging = false;
 
-    // 両端の余白は CSS の .sig_track::before / ::after で中央寄せを担保する
+    // 양쪽 여백은 CSS의 .sig_track::before / ::after 로 가운데 정렬을 보장
 
     function nextSlide() {
         const card = sigTrack.querySelector('.sig_card');
         if (!card) return;
-        const step = card.offsetWidth + 16; // カード幅 + gap
+        const step = card.offsetWidth + 16; // 카드 폭 + gap
         const maxScroll = sigTrack.scrollWidth - sigTrack.clientWidth;
         if (sigTrack.scrollLeft >= maxScroll - 2) {
             sigTrack.scrollTo({ left: 0, behavior: 'smooth' });
@@ -110,13 +110,13 @@ if (sigTrack) {
         timer = null;
     }
 
-    // ホバー / タッチで一時停止
+    // 호버 / 터치 시 일시정지
     sigTrack.addEventListener('mouseenter', () => { paused = true; });
     sigTrack.addEventListener('mouseleave', () => { paused = false; });
     sigTrack.addEventListener('touchstart', () => { paused = true; }, { passive: true });
     sigTrack.addEventListener('touchend', () => { paused = false; });
 
-    // ドラッグで左右スクロール
+    // 드래그로 좌우 스크롤
     let startX = 0;
     let startScroll = 0;
     let moved = false;
@@ -149,7 +149,7 @@ if (sigTrack) {
     sigTrack.addEventListener('pointerup', endDrag);
     sigTrack.addEventListener('pointercancel', endDrag);
 
-    // ドラッグ後のクリック誤作動を防止
+    // 드래그 후 클릭 오작동 방지
     sigTrack.addEventListener('click', (e) => {
         if (moved) {
             e.preventDefault();

@@ -153,7 +153,7 @@ header{
     transform: translateY(-1px);
 }
 
-/* ===== SIGNATURE / 代表診療分野 ===== */
+/* ===== SIGNATURE / 대표 진료분야 ===== */
 #signature{
     margin-top: 50px;
 }
@@ -172,7 +172,7 @@ header{
     display: none;
 }
 
-/* 最初と最後のカードを中央に寄せるための余白（カード幅と同じ値を参照） */
+/* 첫·마지막 카드를 가운데로 정렬하기 위한 여백 (카드 폭과 동일한 값 참조) */
 .sig_track::before,
 .sig_track::after{
     content: "";
@@ -374,7 +374,7 @@ header{
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 10px;
-    /* 2行で省略 */
+    /* 2줄로 말줄임 */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -522,7 +522,7 @@ header{
     padding: 0 var(--padding) var(--padding);
 }
 
-/* ===== FAQ / よくある質問 ===== */
+/* ===== FAQ / 자주 묻는 질문 ===== */
 #faq{
     margin-top: 50px;
     padding: 0 var(--padding);
@@ -616,7 +616,7 @@ header{
     font-family: 'SST', 'Noto Sans JP', sans-serif;
 }
 
-/* ===== CTA / 5%割引クーポン ===== */
+/* ===== CTA / 5% 할인 쿠폰 ===== */
 #cta_coupon{
     margin-top: 50px;
     padding: 0 var(--padding);
@@ -679,7 +679,7 @@ header{
     color: var(--hover);
 }
 
-/* ===== INFORMATION / アクセス ===== */
+/* ===== INFORMATION / 오시는 길 ===== */
 #information{
     margin-top: 50px;
     margin-bottom: 60px;

@@ -75,6 +75,101 @@ if (eventGrid && eventMore) {
     renderCards();
 }
 
+/* ===== SIGNATURE オートスライド ===== */
+const sigTrack = document.querySelector('.sig_track');
+
+if (sigTrack) {
+    const INTERVAL = 3000;
+    let timer = null;
+    let paused = false;
+    let isDragging = false;
+
+    // 最初と最後のカードも中央にこられるよう両端に余白
+    function applyEdgePadding() {
+        const card = sigTrack.querySelector('.sig_card');
+        if (!card) return;
+        const pad = Math.max(0, (sigTrack.clientWidth - card.offsetWidth) / 2);
+        sigTrack.style.paddingLeft = pad + 'px';
+        sigTrack.style.paddingRight = pad + 'px';
+    }
+
+    function nextSlide() {
+        const card = sigTrack.querySelector('.sig_card');
+        if (!card) return;
+        const step = card.offsetWidth + 16; // カード幅 + gap
+        const maxScroll = sigTrack.scrollWidth - sigTrack.clientWidth;
+        if (sigTrack.scrollLeft >= maxScroll - 2) {
+            sigTrack.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            sigTrack.scrollBy({ left: step, behavior: 'smooth' });
+        }
+    }
+
+    applyEdgePadding();
+    window.addEventListener('resize', applyEdgePadding);
+
+    function start() {
+        if (timer) return;
+        timer = setInterval(() => {
+            if (!paused && !isDragging) nextSlide();
+        }, INTERVAL);
+    }
+
+    function stop() {
+        clearInterval(timer);
+        timer = null;
+    }
+
+    // ホバー / タッチで一時停止
+    sigTrack.addEventListener('mouseenter', () => { paused = true; });
+    sigTrack.addEventListener('mouseleave', () => { paused = false; });
+    sigTrack.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+    sigTrack.addEventListener('touchend', () => { paused = false; });
+
+    // ドラッグで左右スクロール
+    let startX = 0;
+    let startScroll = 0;
+    let moved = false;
+
+    sigTrack.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        moved = false;
+        startX = e.clientX;
+        startScroll = sigTrack.scrollLeft;
+        sigTrack.style.scrollSnapType = 'none';
+        sigTrack.classList.add('dragging');
+        sigTrack.setPointerCapture(e.pointerId);
+    });
+
+    sigTrack.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) moved = true;
+        sigTrack.scrollLeft = startScroll - dx;
+    });
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        sigTrack.classList.remove('dragging');
+        sigTrack.style.scrollSnapType = '';
+        try { sigTrack.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+
+    sigTrack.addEventListener('pointerup', endDrag);
+    sigTrack.addEventListener('pointercancel', endDrag);
+
+    // ドラッグ後のクリック誤作動を防止
+    sigTrack.addEventListener('click', (e) => {
+        if (moved) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
+
+    start();
+}
+
 document.querySelectorAll('.faq_item').forEach((item) => {
     const btn = item.querySelector('.faq_q');
     const answer = item.querySelector('.faq_a');

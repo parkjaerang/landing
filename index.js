@@ -6,13 +6,32 @@ document.querySelectorAll('.ba_img img').forEach((img) => {
     img.addEventListener('click', () => {
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
+        lightbox.classList.remove('qr-mode');
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
     });
 });
 
+const LINE_URL = 'https://line.me/R/ti/p/@482nhzmj?ts=04221619&oat_content=url';
+
+document.querySelectorAll('.line_btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        lightboxImg.src = './img/lineQR.png';
+        lightboxImg.alt = 'LINE QRコード';
+        lightbox.classList.add('open', 'qr-mode');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+lightboxImg.addEventListener('click', () => {
+    if (lightbox.classList.contains('qr-mode')) {
+        window.open(LINE_URL, '_blank');
+    }
+});
+
 function closeLightbox() {
-    lightbox.classList.remove('open');
+    lightbox.classList.remove('open', 'qr-mode');
     document.body.style.overflow = '';
 }
 

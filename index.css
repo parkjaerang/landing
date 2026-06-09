@@ -172,11 +172,11 @@ header{
     display: none;
 }
 
-/* 最初と最後のカードを中央に寄せるための余白（JSではなくCSSで固定） */
+/* 最初と最後のカードを中央に寄せるための余白（カード幅と同じ値を参照） */
 .sig_track::before,
 .sig_track::after{
     content: "";
-    flex: 0 0 calc((100% - min(85vw, 408px)) / 2);
+    flex: 0 0 calc((100% - min(75vw, 360px)) / 2);
 }
 
 .sig_track{
@@ -193,7 +193,7 @@ header{
 }
 
 .sig_card{
-    flex: 0 0 min(85vw, 408px);
+    flex: 0 0 min(75vw, 360px);
     max-width: 500px;
     scroll-snap-align: center;
     background-color: var(--white);

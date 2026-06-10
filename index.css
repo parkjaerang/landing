@@ -611,69 +611,6 @@ header{
     font-family: 'SST', 'Noto Sans JP', sans-serif;
 }
 
-/* ===== CTA / 5% 할인 쿠폰 ===== */
-#cta_coupon{
-    margin-top: 50px;
-    padding: 0 var(--padding);
-}
-
-.cta_card{
-    background-color: var(--ink1);
-    border: 1px solid var(--font2);
-    border-radius: 16px;
-    padding: 28px var(--padding);
-    text-align: center;
-    font-family: 'SST', 'Noto Sans JP', sans-serif;
-    color: var(--font1);
-}
-
-.cta_badge{
-    display: inline-block;
-    background-color: var(--line);
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 14px;
-    border-radius: 999px;
-    margin-bottom: 16px;
-}
-
-.cta_off{
-    font-weight: 900;
-    font-size: 24px;
-    color: var(--font1);
-    margin-bottom: 12px;
-}
-
-.cta_off_num{
-    color: var(--font2);
-    font-size: 40px;
-    line-height: 1;
-}
-
-.cta_desc{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.7;
-    margin-bottom: 24px;
-}
-
-.cta_desc strong{
-    color: var(--font2);
-    font-weight: 700;
-}
-
-.cta_card .line{
-    display: block;
-    max-width: 360px;
-    margin: 0 auto 12px;
-}
-
-.cta_note{
-    font-size: 11px;
-    color: var(--hover);
-}
-
 /* ===== INFORMATION / 오시는 길 ===== */
 #information{
     margin-top: 50px;
@@ -752,8 +689,38 @@ header{
 }
 
 /* ===== FOOTER ===== */
+/* ===== CTA / 무료상담 유도 ===== */
+#cta{
+    margin: 50px;
+    padding: 48px var(--padding);
+    background-color: var(--white);
+    text-align: center;
+}
+
+.cta_i{
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.cta_lead{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--font1);
+    margin-bottom: 12px;
+}
+
+.cta_sub{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--font1);
+    opacity: .8;
+    margin-bottom: 24px;
+}
+
 #footer{
-    margin-top: 50px;
+    margin-top: 0;
     background-color: var(--ink1);
     padding: 32px var(--padding);
 }
